@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
     <title>BERT - Bounded Entity Reasoning Toolkit</title>
     <link rel="stylesheet" href="./landing.css">
     <link rel="icon" type="image/x-icon" href="assets/app_icon.ico">
@@ -60,11 +61,22 @@
         const themeButton = document.getElementById('theme-button');
         const themeIcon = document.getElementById('theme-icon');
         
-        // Check for saved theme preference or use device preference
+        // Always default to light theme unless explicitly set to dark
         const savedTheme = localStorage.getItem('theme');
+        
+        // Force light theme if no preference is saved
+        if (!savedTheme) {
+            localStorage.setItem('theme', 'light');
+        }
+        
+        // Only apply dark theme if explicitly saved as dark
         if (savedTheme === 'dark') {
             document.body.classList.add('dark-theme');
             themeIcon.textContent = '☀️';
+        } else {
+            // Ensure light theme is applied (removing any device preferences)
+            document.body.classList.remove('dark-theme');
+            themeIcon.textContent = '🌙';
         }
         
         themeButton.addEventListener('click', () => {

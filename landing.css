@@ -4,7 +4,7 @@
   line-height: 1.5;
   font-weight: 400;
   
-  /* Default light theme */
+  /* Default light theme - applies to all devices */
   --text-color: #333333;
   --bg-gradient-from: #f0f0f0;
   --bg-gradient-to: #e0e0e0;
@@ -24,6 +24,26 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Override any auto dark mode on devices */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Still use light theme by default, even if device prefers dark */
+    --text-color: #333333;
+    --bg-gradient-from: #f0f0f0;
+    --bg-gradient-to: #e0e0e0;
+    --heading-color: #222222;
+    --subtitle-color: #555555;
+    --button-bg: #ffffff;
+    --button-color: #333333;
+    --button-border: #dddddd;
+    --button-hover-bg: #f5f5f5;
+    --button-hover-border: #aaaaaa;
+    --header-border: rgba(0, 0, 0, 0.1);
+    --img-border: rgba(0, 0, 0, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.15);
+  }
 }
 
 html, body {
